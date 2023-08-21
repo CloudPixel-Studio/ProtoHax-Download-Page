@@ -66,7 +66,7 @@
             isWechat: UA && UA.indexOf('micromessenger') > -1
         }
     }
-const token = 'TOKEN_GITHUB'
+const token = process.env.GITHUB_TOKEN;
 async function getLatestDownloadLink() {
   const response = await fetch('https://api.github.com/repos/CloudPixel-Studio/ProtoHax-Android/actions/artifacts', {
     headers: { 'Accept': 'application/vnd.github.v3+json'
