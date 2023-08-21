@@ -92,9 +92,6 @@ window.onload = async function() {
   var cover = document.getElementById('eLogo');
 
   try {
-    // 获取最新构建的下载链接
-    const latestDownloadLink = await getLatestDownloadLink();
-
     if (env().isAndroid) {
       iphone.style.display = "none";
       android.style.display = "flex";
