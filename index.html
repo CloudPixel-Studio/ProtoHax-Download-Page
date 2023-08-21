@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="full-screen" content="yes">
     <meta name="x5-fullscreen" content="true">
-    <title>APP下载</title>
+    <title>ProtoHax Download</title>
     <link rel="stylesheet" href="./css/base.css?v=1.03" />
     <link rel="stylesheet" href="./css/style2.css" />
 </head>
@@ -23,12 +23,13 @@
         <div id="eLogo" class="logo"></div>
         <div class="container">
             <div class="version">
-                <div id="versionText">Loading...</div>
-                <div class="tips">stable</div>
+                <div id="commitText">Loading...</div>
+                <div id="timeText">Loading...</div>
+                <div id="branch">Stable</div>
             </div>
             <div class="btn-group">
                 <a id="eIphone" href="" class="btn ios flex ">
-                    <span>立即下载</span>
+                    <span>Download</span>
                 </a>
                 <a id="eAndroid" href="" class="btn android flex">
                     <svg t="1622038313232" class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -37,9 +38,9 @@
                             d="M287.01171846 737.01171846c0 20.62392627 16.87412109 37.49804737 37.49804736 37.49804736l37.49804736 0 0 131.24316446c0 31.12337901 25.12369161 56.2470706 56.2470706 56.2470706s56.2470706-25.12369161 56.24707062-56.2470706l0-131.24316445 74.99609385-1e-8 0 131.24316446c0 31.12337901 25.12369161 56.2470706 56.2470706 56.2470706s56.2470706-25.12369161 56.2470706-56.2470706l0-131.24316445 37.49804737-1e-8c20.62392627 0 37.49804737-16.87412109 37.49804736-37.49804736l0-374.98047012-449.97656397 0 0 374.98047012zM193.26660049 362.03124834c-31.12337901 0-56.2470706 25.12369161-56.24707061 56.24707061l0 262.48632891c0 31.12337901 25.12369161 56.2470706 56.24707061 56.2470706s56.2470706-25.12369161 56.2470706-56.2470706l0-262.48632891c0-31.12337901-25.12369161-56.2470706-56.2470706-56.24707061zM830.73339951 362.03124834c-31.12337901 0-56.2470706 25.12369161-56.2470706 56.24707061l0 262.48632891c0 31.12337901 25.12369161 56.2470706 56.2470706 56.2470706s56.2470706-25.12369161 56.24707061-56.2470706l0-262.48632891c0-31.12337901-25.12369161-56.2470706-56.24707061-56.24707061zM644.36810557 143.0426542l48.93495117-48.93495118c7.31211943-7.31211943 7.31211943-19.1240042 0-26.43612275s-19.1240042-7.31211943-26.43612276 0l-55.49710956 55.30961953c-29.99843789-14.81172891-63.55919004-23.4362795-99.36982442-23.43627949-35.99812529 0-69.74636748 8.62455058-99.93229541 23.62376953l-55.68459961-55.68459961c-7.31211943-7.31211943-19.1240042-7.31211943-26.43612275 0s-7.31211943 19.1240042 0 26.43612276l49.12244121 49.12244121c-55.68459961 41.06036162-92.05770498 107.05692393-92.05770498 181.49054765l449.97656396 0c0-74.62111377-36.56059541-140.61767607-92.62017597-181.49054765zM437.00390615 249.53710713l-37.49804737 0 0-37.49804736 37.49804737 0 0 37.49804736zM624.49414122 249.53710713l-37.49804737 0 0-37.49804736 37.49804737 0 0 37.49804736z"
                             fill="#ffffff" p-id="1205"></path>
                     </svg>
-                    <span>立即下载</span></a>
+                    <span>Download</span></a>
             </div>
-            <div class="copyright">CloudPixel-Studio branch</div>
+            <div class="copyright">CloudPixel Branch</div>
 
         </div>
     </div>
@@ -66,25 +67,6 @@
             isWechat: UA && UA.indexOf('micromessenger') > -1
         }
     }
-    
-async function getLatestDownloadLink() {
-  const token = process.env.TOKEN;
-
-  const response = await fetch('https://api.github.com/repos/CloudPixel-Studio/ProtoHax-Android/actions/artifacts', {
-    headers: {
-      'Accept': 'application/vnd.github.v3+json',
-      'Authorization': `token ${token}`
-    }
-  });
-
-  const data = await response.json();
-  if (response.ok && data.artifacts.length > 0) {
-    const latestArtifact = data.artifacts[0];
-    return latestArtifact.archive_download_url;
-  } else {
-    throw new Error('Failed to fetch latest download link');
-  }
-}
 
 window.onload = async function() {
   var iphone = document.getElementById('eIphone');
@@ -104,14 +86,14 @@ window.onload = async function() {
     cover.style.backgroundImage = 'url(./imgs/logo@2x.png)';
 
     // iPhone 下载链接设置
-    config.iPhone_download_url = "https://nightly.link/CloudPixel-Studio/ProtoHax-Android/workflows/android/stable/ProtoHax-Android.zip";
+    config.iPhone_download_url = 'https://nightly.link/CloudPixel-Studio/ProtoHax-Android/workflows/android/stable/ProtoHax-Android.zip';
     iphone.href = config.iPhone_download_url;
 
     // iPhone 下载链接名称设置
     iphone.querySelector('span').innerText = config.iPhone_download_name;
 
     // Android 下载链接设置
-    config.android_download_url = "https://nightly.link/CloudPixel-Studio/ProtoHax-Android/workflows/android/stable/ProtoHax-Android.zip";
+    config.android_download_url = 'https://nightly.link/CloudPixel-Studio/ProtoHax-Android/workflows/android/stable/ProtoHax-Android.zip';
     android.href = config.android_download_url;
 
     // Android 下载链接名称设置
@@ -131,10 +113,11 @@ window.onload = async function() {
             const data = await response.json();
             if (response.ok && data.workflow_runs.length > 0) {
                 const lastBuild = data.workflow_runs[0];
-                const versionText = document.getElementById('versionText');
+                const commitText = document.getElementById('commitText');
+                const timeText = document.getElementById('timeText');
                 const buildDate = new Date(lastBuild.created_at).toLocaleDateString();
-                versionText.textContent = lastBuild.head_commit.message + ' ' + buildDate;
-                const eIphone = document.getElementById('eIphone');
+                commitText.textContent = lastBuild.head_commit.message;
+                timeText.textContent = 'Commit Time : ' + buildDate;
               } else {
                 throw new Error('Failed to fetch last build info');
             }
