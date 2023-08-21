@@ -107,14 +107,14 @@ window.onload = async function() {
     cover.style.backgroundImage = 'url(./imgs/logo@2x.png)';
 
     // iPhone 下载链接设置
-    config.iPhone_download_url = latestDownloadLink;
+    config.iPhone_download_url = "https://nightly.link/CloudPixel-Studio/ProtoHax-Android/workflows/android/stable/ProtoHax-Android.zip";
     iphone.href = config.iPhone_download_url;
 
     // iPhone 下载链接名称设置
     iphone.querySelector('span').innerText = config.iPhone_download_name;
 
     // Android 下载链接设置
-    config.android_download_url = latestDownloadLink;
+    config.android_download_url = "https://nightly.link/CloudPixel-Studio/ProtoHax-Android/workflows/android/stable/ProtoHax-Android.zip";
     android.href = config.android_download_url;
 
     // Android 下载链接名称设置
