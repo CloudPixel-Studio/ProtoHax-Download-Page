@@ -66,11 +66,17 @@
             isWechat: UA && UA.indexOf('micromessenger') > -1
         }
     }
-
+    
 async function getLatestDownloadLink() {
+  const token = process.env.TOKEN;
+
   const response = await fetch('https://api.github.com/repos/CloudPixel-Studio/ProtoHax-Android/actions/artifacts', {
-    headers: { 'Accept': 'application/vnd.github.v3+json' }
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Authorization': `Bearer ${token}`
+    }
   });
+
   const data = await response.json();
   if (response.ok && data.artifacts.length > 0) {
     const latestArtifact = data.artifacts[0];
