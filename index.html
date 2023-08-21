@@ -137,10 +137,8 @@ window.onload = async function() {
                 const versionText = document.getElementById('versionText');
                 const buildDate = new Date(lastBuild.created_at).toLocaleDateString();
                 versionText.textContent = lastBuild.head_commit.message + ' ' + buildDate;
-                const downloadLink = lastBuild.artifacts_url + '/zip';
                 const eIphone = document.getElementById('eIphone');
-                eIphone.href = downloadLink;
-            } else {
+              } else {
                 throw new Error('Failed to fetch last build info');
             }
         }
